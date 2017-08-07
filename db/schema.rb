@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170804131834) do
+ActiveRecord::Schema.define(version: 20170807072349) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -60,10 +60,15 @@ ActiveRecord::Schema.define(version: 20170804131834) do
   add_index "images", ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id", using: :btree
 
   create_table "movies", force: :cascade do |t|
-    t.string   "title",       limit: 255
-    t.text     "description", limit: 65535
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "title",        limit: 255
+    t.text     "description",  limit: 65535
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.string   "genre",        limit: 30,                    null: false
+    t.datetime "release_date"
+    t.string   "trailer",      limit: 255
+    t.boolean  "featured",                   default: false
+    t.boolean  "approved",                   default: false
   end
 
   create_table "users", force: :cascade do |t|
