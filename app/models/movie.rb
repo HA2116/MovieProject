@@ -5,4 +5,6 @@ class Movie < ActiveRecord::Base
 
   accepts_nested_attributes_for :images, allow_destroy: :true, reject_if: proc { |attributes| attributes['image'].blank? }
 
+  has_many :castings, dependent: :destroy
+  has_many :actors, through: :castings
 end

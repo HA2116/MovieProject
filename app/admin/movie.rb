@@ -1,6 +1,6 @@
 ActiveAdmin.register Movie do
 
-  permit_params :title, :genre, :trailer, :release_date, :description, :featured, :approved, images_attributes: [:id, :image, :_destroy]
+  permit_params :title, :genre, :trailer, :release_date, :description, :featured, :approved, actor_ids: [], images_attributes: [:id, :image, :_destroy]
 
   menu priority: 3
 
@@ -13,6 +13,7 @@ ActiveAdmin.register Movie do
       f.input :approved
       f.input :genre, as: :select, collection: Movie::GENRES.map {|genre| [genre.titleize, genre]}, include_blank: false
       f.input :description
+      f.input :actor_ids, as: :select, collection: Actor.all, include_blank: false, multiple: true
       f.has_many :images, allow_destroy: true do |image|
         image.input :image, hint: image_tag(image.object.image.url(:thumb))
       end
@@ -39,6 +40,17 @@ ActiveAdmin.register Movie do
       row :featured
       row :approved
       row :description
+      if movie.actors.present?
+        row :actors do
+          div do
+            movie.actors.each do |actor|
+              div do
+                actor.name
+              end
+            end
+          end
+        end
+      end
       if movie.images.present?
         row :posters do
           div do
