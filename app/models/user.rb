@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 
   def profile_picture(type)
     profile_pic = self.image
-    profile_pic.present? ? profile_pic.image.url(type) : 'missing.png'
+    profile_pic.present? ? profile_pic.image.url(type) : "thumb/missing.png"
   end
 
 end
