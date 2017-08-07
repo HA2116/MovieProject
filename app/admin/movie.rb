@@ -8,7 +8,7 @@ ActiveAdmin.register Movie do
     f.inputs do
       f.input :title
       f.input :trailer
-      f.input :release_date
+      f.input :release_date, as: :datepicker
       f.input :featured
       f.input :approved
       f.input :genre, as: :select, collection: Movie::GENRES.map {|genre| [genre.titleize, genre]}, include_blank: false
