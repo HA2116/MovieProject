@@ -1,2 +1,62 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.devise-heading {
+  font-weight: bold;
+  font-size: 26px;
+  text-align: center;
+}
+
+.links {
+  font-size: 14px;
+  text-align: center;
+}
+
+body {
+  padding-top: 10px;
+  padding-bottom: 25px;
+}
+
+.form-devise {
+  max-width: 450px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.margin-padded-space {
+  padding: 6px;
+  margin-bottom: 6px;
+  margin-top: 6px;
+}
+
+.site-title {
+  font-weight: bold;
+  font-size: 32px;
+  padding: 15px;
+  margin: 0 auto;
+  margin-top: 36px;
+  text-align: center;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 26px;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+h3 {
+  font-weight: normal;
+  font-size: 20px;
+}
+
+.header-content {
+  margin-top: 0.1px;
+}
+
+.navbar-inverse {
+  font-weight: bold;
+}

@@ -2,15 +2,20 @@
 <html>
 <head>
 
-  <title>Movieproject</title>
+  <title>Movie Management System</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
 </head>
 <body>
-<%= render 'layouts/notice' %>
-<%= yield %>
+
+  <%= render 'shared/header' %>
+  <%= render 'layouts/notice' %>
+
+  <div class='container'>
+    <%= yield %>
+  </div>
 
 </body>
 </html>
