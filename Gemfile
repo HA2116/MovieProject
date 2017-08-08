@@ -51,3 +51,4 @@ end
   gem 'paperclip'
   gem 'nested_form'
   gem 'bootstrap-sass', '~> 3.3.6'
+  gem 'kaminari'

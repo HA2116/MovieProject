@@ -1,4 +1,6 @@
 class Movie < ActiveRecord::Base
+  paginates_per 9
+
   GENRES = ['comedy', 'horror', 'crime', 'action', 'drama', 'thriller', 'fantasy', 'animation']
 
   has_many :images, as: :imageable, dependent: :destroy
@@ -8,6 +10,7 @@ class Movie < ActiveRecord::Base
   has_many :castings, dependent: :destroy
   has_many :actors, through: :castings
 
+  scope :approved, -> { where(approved: true) }
   scope :featured, -> { where(approved: true, featured: true) }
   scope :latest, -> { where(approved: true).order(release_date: :desc) }
   scope :top, -> { where(approved: true) }
