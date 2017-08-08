@@ -1,0 +1,23 @@
+<div class='margin-padded-space text-center movie-title'>
+  <h2>Latest Movies</h2>
+</div>
+
+<div class='margin-padded-space'>
+<%= render partial: 'movies', locals: { movies: @latest_movies } %>
+</div>
+
+<div class='margin-padded-space text-center movie-title'>
+  <h2>Featured Movies</h2>
+</div>
+
+<div class='margin-padded-space'>
+<%= render partial: 'movies', locals: { movies: @featured_movies } %>
+</div>
+
+<div class='margin-padded-space text-center movie-title'>
+  <h2>Top Movies</h2>
+</div>
+
+<div class='margin-padded-space'>
+<%= render partial: 'movies', locals: { movies: @top_movies } %>
+</div>
