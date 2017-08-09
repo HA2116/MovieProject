@@ -8,5 +8,8 @@
     <% else %>
       <%= image_tag('medium/missing.png', class: 'movie-img', alt: 'Movie Poster Not Available') %>
     <% end %>
+    <div class='text-center button'>
+      <%= link_to 'Show', movie, class: 'btn btn-sm btn-success' %>
+    </div>
   </div>
 <% end %>

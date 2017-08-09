@@ -1,0 +1,73 @@
+<div class='separate-box'>
+  <div class='heading-space text-center'>
+    <h2>Movie Details</h2>
+  </div>
+  <div class='col-md-10 col-md-offset-1'>
+    <div class="col-md-5">
+      <div class='clearfix'></div>
+      <% if @movie.images.present? %>
+        <div class='movie-poster-container'>
+          <% if @movie.images.count > 1 %>
+            <%= render partial: 'shared/slider', locals: { posters: @movie.images } %>
+          <% else %>
+            <%= image_tag @movie.images.first.image.url(:large) %>
+          <% end %>
+      </div>
+      <% else %>
+        <p> No posters have been added yet. </p>
+      <% end %>
+    </div>
+    <div class="col-md-7">
+      <p>
+        <strong>Title:</strong>
+        <%= @movie.title %>
+      </p>
+
+      <p>
+        <strong>Genre:</strong>
+        <%= @movie.genre.titleize %>
+      </p>
+
+      <p>
+        <strong>Release Date:</strong>
+        <%= @movie.release_date %>
+      </p>
+
+      <p>
+        <strong>Cast:</strong>
+      </p>
+
+      <% if @movie.actors.present? %>
+        <% @movie.actors.each do |actor| %>
+          <div>
+            <%= actor.name %>
+          </div>
+        <% end %>
+      <% else %>
+        <p> No actors have been added yet. </p>
+      <% end %>
+    </div>
+  </div>
+  <div class='clearfix'></div>
+  <div class='movie-description element-padding col-md-12'>
+    <%= @movie.description %>
+  </div>
+
+  <div class='clearfix'></div>
+  <div class='text-center'>
+    <h2> Trailer </h2>
+    <hr>
+  </div>
+  <div class='col-md-6 col col-md-offset-3'>
+    <div class="embed-responsive embed-responsive-4by3">
+      <iframe class="embed-responsive-item" src="<%= @movie.trailer %>" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <div class='clearfix'></div>
+  <div class='review-space'>
+    <h2> Reviews: </h2>
+    <hr>
+  </div>
+
+</div>

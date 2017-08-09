@@ -52,3 +52,4 @@ end
   gem 'nested_form'
   gem 'bootstrap-sass', '~> 3.3.6'
   gem 'kaminari'
+  gem "breadcrumbs_on_rails"
