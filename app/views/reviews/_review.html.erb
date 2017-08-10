@@ -1,0 +1,34 @@
+<div id='review-id-<%= review.id %>'>
+  <div class='clearfix'></div>
+  <div class='margin-padded-space'>
+    <div class='row'>
+      <div class='col-md-1 col-md-offset-3'>
+        <%= image_tag(review.user.profile_picture(:thumb), class: 'img-responsive img-review') %>
+      </div>
+      <div class='col-md-2 user-review'>
+        <strong>
+          <%= review.user.first_name %>
+          <%= review.user.last_name %>
+        </strong>
+      </div>
+      <div class='col-md-3 text-center review-owner-options'>
+        <% if current_user.present? %>
+            <% if review.user == current_user %>
+              <span>
+                <%= link_to 'Edit', edit_movie_review_path(@movie, review), class: 'button btn btn-sm btn-primary' %>
+              </span>
+              <span>
+                <%= link_to 'Remove', [@movie, review], method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: 'button btn btn-sm btn-danger' %>
+              </span>
+            <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class='clearfix'></div>
+    <div class='review-msg-space col-md-6 col-md-offset-3'>
+      <%= review.content %>
+    </div>
+  </div>
+  <div class='clearfix'></div>
+  <hr>
+</div>

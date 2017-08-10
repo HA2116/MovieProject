@@ -65,9 +65,32 @@
   </div>
 
   <div class='clearfix'></div>
-  <div class='review-space'>
-    <h2> Reviews: </h2>
-    <hr>
+  <hr>
+
+  <% if user_signed_in? %>
+    <div class='col-md-3'>
+      <h3>Leave a Review:</h3>
+    </div>
+    <div class='col-md-9'>
+      <%= render partial: 'reviews/form', locals: { form_option: true }%>
+    </div>
+  <% end %>
+
+  <div class='clearfix'></div>
+  <hr>
+  <div class='text-center'%>
+    <h3>Reviews</h3>
   </div>
+  <hr>
+
+  <div id='reviews-container'>
+    <%= render @movie.reviews %>
+  </div>
+
+  <% if !@movie.reviews.present? %>
+    <div class='text-center review-msg-space' id='review-msg'>
+      <%= @movie.title.titleize %> has not been reviewed yet.
+    </div>
+  <% end %>
 
 </div>

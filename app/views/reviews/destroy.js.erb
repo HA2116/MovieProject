@@ -1,0 +1,5 @@
+$('#review-id-<%= @review.id %>').remove();
+
+<% if @movie.reviews.count == 0 %>
+  $('#review-msg').show();
+<% end %>

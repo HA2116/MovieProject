@@ -1,6 +1,8 @@
 class Movie < ActiveRecord::Base
   paginates_per 9
 
+  validates :title, presence: true
+
   GENRES = ['comedy', 'horror', 'crime', 'action', 'drama', 'thriller', 'fantasy', 'animation']
 
   has_many :images, as: :imageable, dependent: :destroy
@@ -9,6 +11,7 @@ class Movie < ActiveRecord::Base
 
   has_many :castings, dependent: :destroy
   has_many :actors, through: :castings
+  has_many :reviews, dependent: :destroy
 
   scope :approved, -> { where(approved: true) }
   scope :featured, -> { where(approved: true, featured: true) }

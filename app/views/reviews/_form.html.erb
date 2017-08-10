@@ -1,0 +1,22 @@
+<%= form_for([@movie, @review], remote: form_option) do |f| %>
+  <% if @review.errors.any? %>
+    <div id='error_explanation'>
+      <h2><%= pluralize(@review.errors.count, 'error') %> prohibited this review from being saved:</h2>
+
+      <ul>
+        <% @review.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+  <%= f.text_area :content, rows: 3, class: 'review-box', placeholder: 'Leave a review...' %>
+  </div>
+
+  <div class='clearfix'></div>
+  <div class='form-actions review-msg-space'>
+    <%= f.submit 'Submit', class: 'btn btn-mini btn-info' %>
+  </div>
+<% end %>

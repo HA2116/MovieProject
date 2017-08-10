@@ -9,6 +9,13 @@ class MoviesController < ApplicationController
 
   def show
     add_breadcrumb @movie.title, movie_path
+
+    @review = Review.new
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @movie }
+    end
   end
 
   private
