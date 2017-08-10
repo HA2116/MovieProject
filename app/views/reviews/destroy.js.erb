@@ -1,5 +1,7 @@
-$('#review-id-<%= @review.id %>').remove();
+$('#review_<%= @review.id %>').remove();
 
-<% if @movie.reviews.count == 0 %>
-  $('#review-msg').show();
-<% end %>
+if($('#review-msg').length > 0) {
+  <% if @movie.reviews.count == 0 %>
+    $('#review-msg').removeClass('hidden');
+  <% end %>
+}

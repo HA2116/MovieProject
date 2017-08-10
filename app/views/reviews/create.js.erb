@@ -1,2 +1,3 @@
 $('#reviews-container').prepend("<%= escape_javascript (render partial: 'review', locals: { review: @review }) %>");
-$('#review-msg').hide();
+$('#review-msg').addClass('hidden');
+$('#review-form-id').get(0).reset();

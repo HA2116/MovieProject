@@ -72,7 +72,7 @@
       <h3>Leave a Review:</h3>
     </div>
     <div class='col-md-9'>
-      <%= render partial: 'reviews/form', locals: { form_option: true }%>
+      <%= render partial: 'reviews/form', locals: { form_option: true } %>
     </div>
   <% end %>
 
@@ -87,10 +87,8 @@
     <%= render @movie.reviews %>
   </div>
 
-  <% if !@movie.reviews.present? %>
-    <div class='text-center review-msg-space' id='review-msg'>
-      <%= @movie.title.titleize %> has not been reviewed yet.
-    </div>
-  <% end %>
+  <div class='text-center review-msg-space <%= review_msg_class %>' id='review-msg'>
+    <%= @movie.title.titleize %> has not been reviewed yet.
+  </div>
 
 </div>

@@ -34,7 +34,6 @@ ActiveAdmin.register Movie do
     attributes_table do
       row :title
       row :genre
-      row :description
       row :release_date
       row :trailer
       row :featured
@@ -63,6 +62,15 @@ ActiveAdmin.register Movie do
         end
       end
     end
+    panel "Reviews" do
+      table_for movie.reviews do
+        column :id
+        column :content
+        column :user
+        column "Action" do |review|
+          link_to("Delete", [movie, review], method: :delete, remote: true, data: { confirm: 'Are you sure?' })
+        end
+      end
+    end
   end
-
 end
