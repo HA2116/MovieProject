@@ -1,15 +1,14 @@
 <% movies.each do |movie| %>
-  <div class='margin-padded-space col-md-4'>
-    <div class='text-center'>
-      <strong><%= movie.title %></strong>
+  <%= link_to movie do %>
+    <div class='margin-padded-space col-md-4'>
+      <div class='text-center'>
+        <strong><%= movie.title %></strong>
+      </div>
+      <% if movie.images.present? %>
+        <%= image_tag(movie.images.first.image.url(:medium), class: 'movie-img') %>
+      <% else %>
+        <%= image_tag('medium/missing.png', class: 'movie-img', alt: 'Movie Poster Not Available') %>
+      <% end %>
     </div>
-    <% if movie.images.present? %>
-      <%= link_to(image_tag(movie.images.first.image.url(:medium), class: 'movie-img')) %>
-    <% else %>
-      <%= image_tag('medium/missing.png', class: 'movie-img', alt: 'Movie Poster Not Available') %>
-    <% end %>
-    <div class='text-center button'>
-      <%= link_to 'Show', movie, class: 'btn btn-sm btn-success' %>
-    </div>
-  </div>
+  <% end %>
 <% end %>
