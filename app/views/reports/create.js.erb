@@ -1,0 +1,7 @@
+<% if @report %>
+  $('#report_submit_<%= @review.id %>').toggle();
+  $('#report_<%= @review.id %>').addClass('hidden');
+<% else %>
+  $('#already_reported_<%= @review.id %>').toggle();
+  $('#report_<%= @review.id %>').addClass('hidden');
+<% end %>

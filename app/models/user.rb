@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :image, allow_destroy: :true, reject_if: proc { |attributes| attributes['image'].blank? }
 
   has_many :reviews, dependent: :destroy
+  has_many :reports, dependent: :destroy
 
   def profile_picture(type)
     profile_pic = self.image

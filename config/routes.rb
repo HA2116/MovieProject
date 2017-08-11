@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   resources :movies, only: [:index, :show]  do
-    resources :reviews, except: [:index, :show, :new]
+    resources :reviews, except: [:index, :show, :new] do
+      resources :reports, only: [:create], defaults: { format: 'js' }
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

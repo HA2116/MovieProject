@@ -13,14 +13,28 @@
       </div>
       <div class='col-md-3 text-center review-owner-options'>
         <% if current_user.present? %>
-            <% if review.user == current_user %>
-              <span>
-                <%= link_to 'Edit', edit_movie_review_path(@movie, review), class: 'button btn btn-sm btn-primary' %>
-              </span>
-              <span>
-                <%= link_to 'Remove', [@movie, review], method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: 'button btn btn-sm btn-danger' %>
-              </span>
-            <% end %>
+          <% if review.user == current_user %>
+            <span>
+              <%= link_to 'Edit', edit_movie_review_path(@movie, review), class: 'button btn btn-sm btn-primary' %>
+            </span>
+            <span>
+              <%= link_to 'Remove', [@movie, review], method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: 'button btn btn-sm btn-warning' %>
+            </span>
+          <% else %>
+            <div id = 'report_<%= review.id %>' >
+              <%= form_for([@movie, review, review.reports.build], remote: true) do |f| %>
+                <%= button_tag(data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger') do %>
+                  <span class='glyphicon glyphicon-thumbs-down'>
+                    <%= review.reports.count %>
+                  </span>
+                <% end %>
+              <% end %>
+            </div>
+            <div class='clearfix'></div>
+            <div id= 'report_submit_<%= review.id %>' class='report-sub-msg'> Reported!</div>
+            <div class='clearfix'></div>
+            <div id= 'already_reported_<%= review.id %>' class='report-sub-msg'> Aleady reported!</div>
+          <% end %>
         <% end %>
       </div>
     </div>

@@ -18,6 +18,7 @@ ActiveAdmin.register Review do
     column :movie, sortable: :movie_id
     column :user, sortable: :user_id
     column :content
+    column :report_count
     actions
   end
 
@@ -26,6 +27,7 @@ ActiveAdmin.register Review do
       row :movie
       row :user
       row :content
+      row :report_count
       row :created_at
       row :updated_at
     end

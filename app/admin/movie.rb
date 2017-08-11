@@ -67,6 +67,7 @@ ActiveAdmin.register Movie do
         column :id
         column :content
         column :user
+        column :report_count
         column "Action" do |review|
           link_to("Delete", [movie, review], method: :delete, remote: true, data: { confirm: 'Are you sure?' })
         end

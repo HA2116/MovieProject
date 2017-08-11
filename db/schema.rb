@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170809150253) do
+ActiveRecord::Schema.define(version: 20170810120409) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -89,12 +89,23 @@ ActiveRecord::Schema.define(version: 20170809150253) do
     t.boolean  "approved",                   default: false
   end
 
+  create_table "reports", force: :cascade do |t|
+    t.integer  "review_id",  limit: 4, null: false
+    t.integer  "user_id",    limit: 4, null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "reports", ["review_id"], name: "index_reports_on_review_id", using: :btree
+  add_index "reports", ["user_id"], name: "index_reports_on_user_id", using: :btree
+
   create_table "reviews", force: :cascade do |t|
-    t.string   "content",    limit: 255, null: false
-    t.integer  "movie_id",   limit: 4,   null: false
-    t.integer  "user_id",    limit: 4,   null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "content",      limit: 255,             null: false
+    t.integer  "movie_id",     limit: 4,               null: false
+    t.integer  "user_id",      limit: 4,               null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.integer  "report_count", limit: 4,   default: 0
   end
 
   add_index "reviews", ["movie_id"], name: "index_reviews_on_movie_id", using: :btree
