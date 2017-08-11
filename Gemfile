@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby "2.2.2"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
@@ -53,3 +54,8 @@ end
   gem 'bootstrap-sass', '~> 3.3.6'
   gem 'kaminari'
   gem "breadcrumbs_on_rails"
+
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
